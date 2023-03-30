@@ -69,5 +69,33 @@ function createPosts(categoryLocation, posts) {
     }) // this function body REPEATS for each (that's why it's called forEach!) "post" object in the "posts" array until it goes through the entire array
 }
 
-createPosts(featuredPostsSection, featuredPosts )// invokes the function createPosts on the featuredPosts array, which runs the function that we created above and populates the HTML page with each article object stored in featuredPosts - these article objects are appended to the featuredPostsSection
-createPosts(latestPostsSection, latestPosts); // invokes the function createPosts on the latestPosts array, which runs the function that we created above and populates the HTML page with each article object stored in latestPosts - these article objects are appended to the latestPostsSection
+function placeFeaturedPosts() {
+  createPosts(featuredPostsSection, featuredPosts);
+  // This line of code was commented out after Brandon requested to have the functionality changed - initially the content was to be shown on mouse over, but now it should show on click of a button
+  // featuredPostHeader.removeEventListener('mouseover', placeFeaturedPosts);
+};
+
+function placeLatestPosts() {
+  createPosts(latestPostsSection, latestPosts);
+    // This line of code was commented out after Brandon requested to have the functionality changed - initially the content was to be shown on mouse over, but now it should show on click of a button
+  // latestPostHeader.removeEventListener('mouseover', placeLatestPosts);
+};
+
+/* This whole block of code was commented out after Brandon requested to have the functionality changed - initially the content was to be shown on mouse over, but now it should show on click of a button
+
+// createPosts(featuredPostsSection, featuredPosts )// invokes the function createPosts on the featuredPosts array, which runs the function that we created above and populates the HTML page with each article object stored in featuredPosts - these article objects are appended to the featuredPostsSection
+// createPosts(latestPostsSection, latestPosts); // invokes the function createPosts on the latestPosts array, which runs the function that we created above and populates the HTML page with each article object stored in latestPosts - these article objects are appended to the latestPostsSection
+
+// let featuredPostHeader = document.getElementById('featured-header');
+// let latestPostHeader = document.getElementById('latest-header');
+
+// featuredPostHeader.addEventListener('mouseover', placeFeaturedPosts);
+// latestPostHeader.addEventListener('mouseover', placeLatestPosts);
+
+*/
+
+let featuredButton = document.getElementById('featuredButton');
+let latestButton = document.getElementById('latestButton');
+
+featuredButton.addEventListener('click', placeFeaturedPosts, { once:true });
+latestButton.addEventListener('click', placeLatestPosts, { once:true });
